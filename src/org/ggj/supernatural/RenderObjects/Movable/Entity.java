@@ -13,7 +13,7 @@ import org.newdawn.slick.Image;
  * @author Colby Dame
  *
  */
-public class Entity extends WorldObject implements Cloneable {
+public class Entity extends WorldObject{
 	
 	public static enum SpriteDirection { North, East, South, West }
 	protected SpriteDirection Orientation;
