@@ -14,8 +14,8 @@ public class SuperNatural extends BasicGame {
 	//Images are rendered with coordinates at top left
 	Image plane = null;
 	//Image land = null;
-	float x = 400;
-	float y = 300;
+	float x = 4;
+	float y = 3;
 	float scale = 1;
 	
 	public static final String gameName = "JarHeart";
