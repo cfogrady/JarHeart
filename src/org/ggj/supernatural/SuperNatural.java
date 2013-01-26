@@ -37,6 +37,10 @@ public class SuperNatural extends BasicGame {
 			throws SlickException     
 	{
 		Input input = gc.getInput();
+		
+		if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
+		{
+		}
 
 		if(input.isKeyDown(Input.KEY_A))
         {
