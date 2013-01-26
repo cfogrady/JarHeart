@@ -17,8 +17,8 @@ import org.newdawn.slick.opengl.Texture;
  */
 public class WorldObject extends Image {
 
-	private float X;
-	private float Y;
+	protected float X;
+	protected float Y;
 	private boolean Passable;
 	
 	/**
@@ -30,6 +30,14 @@ public class WorldObject extends Image {
 	public void SetX(float X) { this.X = X; }
 	public void SetY(float Y) { this.Y = Y; }
 	public void SetPassable( boolean Passable ) { this.Passable = Passable; }
+	
+	public void Update(){
+		
+	}
+	
+	public void Draw(){
+		this.draw(X,Y,1);
+	}
 	
 	public WorldObject(Image other, float X, float Y, boolean Passable) {
 		super(other);

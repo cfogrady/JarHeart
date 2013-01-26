@@ -31,7 +31,7 @@ public class SuperNatural extends BasicGame {
 	public void init(GameContainer gc) 
 			throws SlickException {
 		plane = new Image("sprites/plane.png");
-		Map = new WorldMap(800,600);
+		Map = new WorldMap(800,600,gc);
 		//land = new Image("sprites/land.jpeg");
 	}
  
@@ -39,32 +39,15 @@ public class SuperNatural extends BasicGame {
 	public void update(GameContainer gc, int delta) 
 			throws SlickException     
 	{
-		Input input = gc.getInput();
-		
-		if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON))
-		{
-		}
-
-		if(input.isKeyDown(Input.KEY_A))
-		{
-		}
- 
-		if(input.isKeyDown(Input.KEY_D))
-		{
-
-		}
-
-		if(input.isKeyDown(Input.KEY_W))
-		{
-
-		}
+		Map.Update();
 	}
  
 	public void render(GameContainer gc, Graphics g) 
 			throws SlickException 
 	{
 		//land.draw(0, 0);
-		Map.Update();
+
+		Map.Draw();
 		plane.draw(x, y, scale);
 	}
  

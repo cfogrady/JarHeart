@@ -3,19 +3,23 @@ package org.ggj.supernatural.WorldMap;
 import java.util.*;
 
 import org.ggj.supernatural.RenderObjects.WorldObject;
+import org.ggj.supernatural.RenderObjects.Movable.Player.Player;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 public class WorldMap {
 	
 	private Vector<WorldObject> TileMap;
+	GameContainer GC;
 	
-	public WorldMap (int Width, int Height) throws SlickException {
-		
-		/** Holds the vector that contains all drawable objects in the world
-		 *  @param Width Width
-		 *  @param Height Height
-		 */
+	/** Holds the vector that contains all drawable objects in the world
+	 *  @param Width Width
+	 *  @param Height Height
+	 */
+	public WorldMap (int Width, int Height, GameContainer GC) throws SlickException {
+		this.GC = GC;
+
 		TileMap = new Vector<WorldObject>();
 		Image Ground = new Image("sprites/ground_center.png");
 		
@@ -25,15 +29,27 @@ public class WorldMap {
 				TileMap.add(Tile);
 			}
 		}
+		Player TempPlayer = new Player(new Image("sprites/plane.png"), 100, 100, true, GC);
+		TileMap.add(TempPlayer);
 	}
 	
 	public void Update(){
 		Iterator<WorldObject> Itr = TileMap.iterator();
 		while(Itr.hasNext()){
 			WorldObject Temp = Itr.next();
-			Temp.draw(Temp.GetX(),Temp.GetY(),1);
+			Temp.Update();
 		}
 		
 	}
+	
+	public void Draw(){
+		Iterator<WorldObject> Itr = TileMap.iterator();
+		while(Itr.hasNext()){
+			WorldObject Temp = Itr.next();
+			Temp.Draw();
+		}
+		
+	}
+	
 
 }
