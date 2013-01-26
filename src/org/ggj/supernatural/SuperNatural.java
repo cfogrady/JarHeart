@@ -43,18 +43,18 @@ public class SuperNatural extends BasicGame {
 		}
 
 		if(input.isKeyDown(Input.KEY_A))
-        {
-        }
+		{
+		}
  
-        if(input.isKeyDown(Input.KEY_D))
-        {
+		if(input.isKeyDown(Input.KEY_D))
+		{
 
-        }
+		}
 
-        if(input.isKeyDown(Input.KEY_W))
-        {
+		if(input.isKeyDown(Input.KEY_W))
+		{
 
-        }
+		}
 	}
  
 	public void render(GameContainer gc, Graphics g) 
