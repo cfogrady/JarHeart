@@ -13,7 +13,7 @@ import org.newdawn.slick.Image;
  * @author Colby Dame
  *
  */
-public class Entity extends WorldObject {
+public class Entity extends WorldObject implements Cloneable {
 	
 	public static enum SpriteDirection { North, East, South, West }
 	protected SpriteDirection Orientation;
@@ -43,20 +43,27 @@ public class Entity extends WorldObject {
 	}
 	
 	public boolean CollidesWith(WorldObject Compare){
+		if (X + 32 > Compare.GetX())
+			if(X < Compare.GetX())
+				if (Y + 32 > Compare.GetY())
+					if(Y < Compare.GetY())
+						return true;
 		return false;
 	}
 	
 	public boolean HasMovementCollisions(float Movement, Entity.SpriteDirection Direction){
 		
-		Entity TempPlayer = (Entity) this.clone();
+		Float TempX = X;
+		Float TempY = Y;
+		
 		switch(Direction){
-		case North: TempPlayer.SetY(TempPlayer.GetY() - Movement);
+		case North: SetY(GetY() - Movement);
 			break;
-		case South: TempPlayer.SetY(TempPlayer.GetY() + Movement);
+		case South: SetY(GetY() + Movement);
 			break;
-		case East: TempPlayer.SetX(TempPlayer.GetX() + Movement);
+		case East: SetX(GetX() + Movement);
 			break;
-		case West: TempPlayer.SetX(TempPlayer.GetX() - Movement);
+		case West: SetX(GetX() - Movement);
 			break;
 		}
 		
@@ -65,11 +72,15 @@ public class Entity extends WorldObject {
 			WorldObject Temp = Itr.next();
 			if(Temp.IsPassable())
 				continue;
-			else if(TempPlayer.CollidesWith(Temp)){
+			else if(CollidesWith(Temp)){
+				X = TempX;
+				Y = TempY;
 				return true;					
 			}
 			
 		}
+		X = TempX;
+		Y = TempY;
 		return false;
 	}
 	

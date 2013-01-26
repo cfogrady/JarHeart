@@ -43,26 +43,25 @@ public class Player extends Entity {
 		{
 		}
 
-		if(input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
-		{
+		if(input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT)){
 			
 			if(!HasMovementCollisions(Speed, SpriteDirection.West))
 				X -= Speed;
 		}
  
-		if(input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
-		{
-			X += Speed;
+		if(input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT)){
+			if(!HasMovementCollisions(Speed, SpriteDirection.East))
+				X += Speed;
 		}
 
-		if(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
-		{
-			Y -= Speed;
+		if(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP)){
+			if(!HasMovementCollisions(Speed, SpriteDirection.North))
+				Y -= Speed;
 		}
 		
 		if(input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN)){
-			
-			Y += Speed;
+			if(!HasMovementCollisions(Speed, SpriteDirection.South))
+				Y += Speed;
 		}
 		
 		super.Update();

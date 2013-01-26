@@ -26,7 +26,11 @@ public class WorldMap {
 		
 		for(int X = 0; X < Width; X += 32){
 			for(int Y = 0; Y < Height; Y += 32){
-				WorldObject Tile = new WorldObject(Ground, (float)(X), (float)(Y), true);
+				WorldObject Tile = null;
+				if( (X > 200) || (Y > 200))
+					Tile = new WorldObject(Ground, (float)(X), (float)(Y), false);
+				else
+					Tile = new WorldObject(Ground, (float)(X), (float)(Y), true);
 				TileMap.add(Tile);
 			}
 		}
