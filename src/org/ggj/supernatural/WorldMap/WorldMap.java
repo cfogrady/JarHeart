@@ -12,6 +12,7 @@ public class WorldMap {
 	
 	private Vector<WorldObject> TileMap;
 	GameContainer GC;
+	Player PlayerCharacter;
 	
 	/** Holds the vector that contains all drawable objects in the world
 	 *  @param Width Width
@@ -29,8 +30,7 @@ public class WorldMap {
 				TileMap.add(Tile);
 			}
 		}
-		Player TempPlayer = new Player(new Image("sprites/plane.png"), 100, 100, true, GC);
-		TileMap.add(TempPlayer);
+		PlayerCharacter = new Player(new Image("sprites/plane.png"), 100, 100, true, this, GC);
 	}
 	
 	public void Update(){
@@ -39,7 +39,7 @@ public class WorldMap {
 			WorldObject Temp = Itr.next();
 			Temp.Update();
 		}
-		
+		PlayerCharacter.Update();
 	}
 	
 	public void Draw(){
@@ -48,8 +48,13 @@ public class WorldMap {
 			WorldObject Temp = Itr.next();
 			Temp.Draw();
 		}
-		
+		PlayerCharacter.Draw();
 	}
 	
+	public Iterator<WorldObject> iterator(){
+		return TileMap.iterator();
+	}
+	
+
 
 }

@@ -3,7 +3,11 @@
  */
 package org.ggj.supernatural.RenderObjects.Movable.Player;
 
+
+import java.util.*;
+import org.ggj.supernatural.RenderObjects.WorldObject;
 import org.ggj.supernatural.RenderObjects.Movable.Entity;
+import org.ggj.supernatural.WorldMap.WorldMap;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
@@ -15,6 +19,8 @@ import org.newdawn.slick.Input;
 public class Player extends Entity {
 	
 	GameContainer GC;
+	WorldMap Map;
+
 
 	/**
 	 * @param other
@@ -23,8 +29,8 @@ public class Player extends Entity {
 	 * @param Passable
 	 * @param GC Gamecontainer for Slick2D
 	 */
-	public Player(Image other, float X, float Y, boolean Passable, GameContainer GC) {
-		super(other, X, Y, Passable);
+	public Player(Image other, float X, float Y, boolean Passable, WorldMap Map, GameContainer GC) {
+		super(other, X, Y, Passable, Map);
 		this.GC = GC;
 		
 		// TODO Auto-generated constructor stub
@@ -37,24 +43,26 @@ public class Player extends Entity {
 		{
 		}
 
-		if(input.isKeyDown(Input.KEY_A))
+		if(input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
 		{
-			X -= 20;
+			
+			if(!HasMovementCollisions(Speed, SpriteDirection.West))
+				X -= Speed;
 		}
  
-		if(input.isKeyDown(Input.KEY_D))
+		if(input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
 		{
-			X += 20;
+			X += Speed;
 		}
 
-		if(input.isKeyDown(Input.KEY_W))
+		if(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
 		{
-			Y -= 20;
+			Y -= Speed;
 		}
 		
-		if(input.isKeyDown(Input.KEY_S)){
+		if(input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN)){
 			
-			Y += 20;
+			Y += Speed;
 		}
 		
 		super.Update();

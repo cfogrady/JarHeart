@@ -31,6 +31,8 @@ public class WorldObject extends Image {
 	public void SetY(float Y) { this.Y = Y; }
 	public void SetPassable( boolean Passable ) { this.Passable = Passable; }
 	
+
+	
 	public void Update(){
 		
 	}
