@@ -1,5 +1,6 @@
 package org.ggj.supernatural;
 
+import org.ggj.supernatural.WorldMap.WorldMap;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
@@ -12,6 +13,7 @@ public class SuperNatural extends BasicGame {
 	
 	//Top Left is 0,0
 	//Images are rendered with coordinates at top left
+	WorldMap Map = null;
 	Image plane = null;
 	//Image land = null;
 	float x = 4;
@@ -29,6 +31,7 @@ public class SuperNatural extends BasicGame {
 	public void init(GameContainer gc) 
 			throws SlickException {
 		plane = new Image("sprites/plane.png");
+		Map = new WorldMap(800,600);
 		//land = new Image("sprites/land.jpeg");
 	}
  
@@ -61,6 +64,7 @@ public class SuperNatural extends BasicGame {
 			throws SlickException 
 	{
 		//land.draw(0, 0);
+		Map.Update();
 		plane.draw(x, y, scale);
 	}
  
