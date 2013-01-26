@@ -43,10 +43,11 @@ public class Entity extends WorldObject{
 	}
 	
 	public boolean CollidesWith(WorldObject Compare){
-		if (X + 32 > Compare.GetX())
-			if(X < Compare.GetX())
-				if (Y + 32 > Compare.GetY())
-					if(Y < Compare.GetY())
+		float Delta = 0.05f;
+		if (X + 32f > Compare.GetX())
+			if(X < Compare.GetX() + 32f)
+				if (Y + 32f > Compare.GetY())
+					if(Y < Compare.GetY() + 32f)
 						return true;
 		return false;
 	}
